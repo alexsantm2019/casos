@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-// use App\Http\Controllers\CasosController;
+use App\Http\Controllers\UsuariosController;
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -26,7 +27,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('users', 'UserController');
-    //Route::resource('casos', CasosController::class);
+    Route::resource('usuarios', 'usuarios\UsuariosController');
     Route::resource('casos', 'casos\CasosController');
 });
 

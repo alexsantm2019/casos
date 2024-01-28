@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -68,18 +69,13 @@ class LoginController extends Controller
         }
 
         // Redirige a la vista de usuarios por defecto
-        return redirect()->route('users.index');
+        return redirect()->route('home');
     }
 
     public function showLoginForm()
     {
         return view('auth.login');
     }
-
-    // protected function authenticated(Request $request, $user)
-    // {
-    //     return redirect()->intended($this->redirectPath());
-    // }
 
     public function login(Request $request)
     {       
@@ -117,7 +113,7 @@ class LoginController extends Controller
         //         ?: redirect()->intended($this->redirectPath());
 
         return $this->authenticated($request, $this->guard()->user())
-        ?: redirect()->route('users.index');
+        ?: redirect()->route('home');
     }
 
     protected function sendFailedLoginResponse(Request $request)

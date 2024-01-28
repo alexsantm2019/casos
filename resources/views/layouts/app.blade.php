@@ -41,7 +41,8 @@
 
                         <ul>
                             <li><a href="{{ route('casos.index') }}">Casos</a></li>
-                            <li><a href="{{ route('users.index') }}">Usuarios</a></li>
+                            <!-- <li><a href="{{ route('users.index') }}">Usuarios</a></li> -->
+                            <li><a href="{{ route('usuarios.index') }}">Usuarios</a></li>
                         </ul>
 
                     </ul>
