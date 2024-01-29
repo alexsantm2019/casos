@@ -3,7 +3,9 @@
 ## Paquetes adicionales a instalar:
 
 •	Laravel collective (Uso de formularios): composer require laravelcollective/html
+
 •	Carbon (Manejo de fechas): composer require nesbot/carbon
+
 •	Toast (Mensajes de acciones): composer require nesbot/carbón
 
 
