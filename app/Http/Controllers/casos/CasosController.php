@@ -20,9 +20,9 @@ class CasosController extends Controller
             WHEN casos.estado = 3 THEN "Cerrado"
             ELSE "Desconocido" END as nombre_estado'))
         ->join('users', 'casos.users_id', '=', 'users.id')
-        ->get();
+        ->paginate(10);
         
-        return view('casos.index')->with(['casos'=>casos::paginate(5)]);
+        return view('casos.index')->with(['casos' => $casos]);
     }
 
     public function create()

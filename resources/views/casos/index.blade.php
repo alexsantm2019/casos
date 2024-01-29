@@ -30,7 +30,7 @@
                 </thead>
                 <tbody>
                     @foreach($casos as $caso)
-                    <tr>
+                        <tr class="{{ $caso->estado === 1 ? '' : ($caso->estado === 2 ? 'table-warning' : 'table-success') }}">
                         <td>{{ $caso->id }}</td>
                         <td>{{ $caso->titulo }}</td>
                         <td>{{ $caso->descripcion }}</td>
