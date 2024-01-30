@@ -18,7 +18,8 @@ class Casos extends Model
         'descripcion',
         'estado',
         'users_id',
-        'fecha_creacion'
+        'fecha_creacion',
+        'cliente'
     ];
 
 

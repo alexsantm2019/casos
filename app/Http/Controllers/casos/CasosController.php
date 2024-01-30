@@ -66,7 +66,8 @@ class CasosController extends Controller
                 'descripcion'       => $data['descripcion'],
                 'estado'            => $data['estado'],
                 'users_id'          => \Auth::id(),
-                'fecha_creacion'    => Carbon::now(),                
+                'fecha_creacion'    => Carbon::now(),    
+                'cliente'            => $data['cliente'],            
             ]);
         }
         
@@ -118,7 +119,10 @@ class CasosController extends Controller
                 'titulo' => $request->input('titulo'),
                 'descripcion' => $request->input('descripcion'),
                 'estado' => $request->input('estado'),
+                'cliente' => $request->input('cliente')
+                
             ]);
+
 
             toastr()->success('Caso actualizado correctamente', 'Success');  
             return redirect()->route('casos.index');

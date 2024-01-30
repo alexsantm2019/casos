@@ -34,6 +34,20 @@
                     @endif
                 </div>
 
+                <div class="col-md-12 form-group">
+                    {!! Form::label('cliente', 'Cliente', ['class' => 'control-label small']) !!}
+                    <span class="badge badge-info text-white">requerido</span>
+                    {!! Form::text('cliente', old('cliente',$casos->cliente ?? ''), ['class' =>
+                    'form-control',
+                    'placeholder' => 'Ingrese un clienkte', 'maxlength' => 100]) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('cliente'))
+                    <p class="help-block" style="color:#DD4B39">
+                        {{ $errors->first('cliente') }}
+                    </p>
+                    @endif
+                </div>
+
                 <div class="col-lg-12 form-group">
                     {!! Form::label('estado', 'Estado ', ['class' => 'control-label small']) !!} 
                     <span class="badge badge-info text-white">requerido</span>

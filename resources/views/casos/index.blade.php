@@ -22,6 +22,7 @@
                         <th>ID</th>
                         <th>Nombre del caso</th>
                         <th>Descripción</th>
+                        <th>Cliente</th>
                         <th>Estado</th>
                         <th>Autor</th>
                         <th>Fecha creación</th>
@@ -34,6 +35,7 @@
                         <td>{{ $caso->id }}</td>
                         <td>{{ $caso->titulo }}</td>
                         <td>{{ $caso->descripcion }}</td>
+                        <td>{{ $caso->cliente }}</td>
                         <td>{{ $caso->nombre_estado }}</td>
                         <td>{{ $caso->nombre_usuario }}</td>
                         <td>{{ $caso->fecha_creacion }}
