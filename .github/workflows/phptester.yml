@@ -1,0 +1,30 @@
+name: Analizar código PHP
+
+on:
+  push:
+    branches:
+      - main  # Cambia esto al nombre de tu rama principal si es diferente
+
+jobs:
+  analizar-codigo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v2
+
+    - name: Configurar PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.2'  # Puedes ajustar esto a tu versión de PHP
+
+    - name: Instalar dependencias
+      run: composer install  # Asegúrate de tener un archivo composer.json en tu proyecto
+
+    - name: Ejecutar PHPStan
+      run: vendor/bin/phpstan analyze --no-progress --memory-limit=2G
+
+    - name: Notificar en caso de errores
+      if: failure()
+      run: echo "Hubo errores al analizar el código PHP en el repositorio."
+
