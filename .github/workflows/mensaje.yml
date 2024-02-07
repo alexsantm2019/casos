@@ -1,0 +1,38 @@
+name: Notificar por SMS al hacer merge
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v2
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Instalar dependencias
+      run: npm install twilio
+
+    - name: Enviar mensaje de texto
+      run: |
+        const client = require('twilio')(process.env.US846cc8758a281c0117e35c3a565e6b77, process.env.TWILIO_AUTH_TOKEN);
+
+        const message = await client.messages.create({
+          body: 'Se ha realizado un merge en el repositorio.',
+          from: process.env.+593999035193,
+          to: 'Número de teléfono del destinatario'  # Reemplaza con los números de teléfono de las personas a notificar
+        });
+
+        console.log('Mensaje enviado:', message.sid)
+      env:
+        TWILIO_ACCOUNT_SID: ${{ secrets.US846cc8758a281c0117e35c3a565e6b77 }}
+        TWILIO_AUTH_TOKEN: ${{ secrets.US846cc8758a281c0117e35c3a565e6b77 }}
+        TWILIO_PHONE_NUMBER: ${{ secrets.593999035193 }}
