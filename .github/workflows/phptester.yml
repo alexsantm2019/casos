@@ -13,13 +13,20 @@ jobs:
     - name: Checkout del código
       uses: actions/checkout@v2
 
+    - name: Configurar Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14.20'
+
     - name: Configurar PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '7.2'  # Puedes ajustar esto a tu versión de PHP
+        php-version: '7.4'  # Puedes ajustar esto a tu versión de PHP
 
     - name: Instalar dependencias
-      run: composer install  # Asegúrate de tener un archivo composer.json en tu proyecto
+      run: |
+        npm install
+        composer install  # Asegúrate de tener un archivo composer.json en tu proyecto
 
     - name: Ejecutar PHPStan
       run: vendor/bin/phpstan analyze --no-progress --memory-limit=2G
@@ -27,4 +34,3 @@ jobs:
     - name: Notificar en caso de errores
       if: failure()
       run: echo "Hubo errores al analizar el código PHP en el repositorio."
-
