@@ -5,6 +5,9 @@ on:
     branches:
       - main  # Cambia esto al nombre de tu rama principal si es diferente
 
+env:
+  NODE_OPTIONS: "--unhandled-rejections=strict"
+
 jobs:
   analizar-codigo:
     runs-on: ubuntu-latest
